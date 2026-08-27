@@ -1,0 +1,93 @@
+[
+  {
+    "check_name": "schema",
+    "ticker": "ALL",
+    "passed": true,
+    "detail": "Schema OK",
+    "metric_value": null
+  },
+  {
+    "check_name": "completeness",
+    "ticker": "LULU",
+    "passed": true,
+    "detail": "7 of 365 expected weekly observations missing (1.9%), threshold is 5.0%",
+    "metric_value": 0.0192
+  },
+  {
+    "check_name": "timeliness_gaps",
+    "ticker": "LULU",
+    "passed": true,
+    "detail": "Largest gap between observations is 14.0 days (threshold 21 days)",
+    "metric_value": 14.0
+  },
+  {
+    "check_name": "duplicates",
+    "ticker": "LULU",
+    "passed": false,
+    "detail": "1 duplicate (date, ticker) records found",
+    "metric_value": 1.0
+  },
+  {
+    "check_name": "outliers",
+    "ticker": "LULU",
+    "passed": true,
+    "detail": "0 observations beyond 4.0 std devs (flagged for review, not auto-removed)",
+    "metric_value": 0.0
+  },
+  {
+    "check_name": "completeness",
+    "ticker": "CMG",
+    "passed": true,
+    "detail": "7 of 365 expected weekly observations missing (1.9%), threshold is 5.0%",
+    "metric_value": 0.0192
+  },
+  {
+    "check_name": "timeliness_gaps",
+    "ticker": "CMG",
+    "passed": true,
+    "detail": "Largest gap between observations is 14.0 days (threshold 21 days)",
+    "metric_value": 14.0
+  },
+  {
+    "check_name": "duplicates",
+    "ticker": "CMG",
+    "passed": false,
+    "detail": "1 duplicate (date, ticker) records found",
+    "metric_value": 1.0
+  },
+  {
+    "check_name": "outliers",
+    "ticker": "CMG",
+    "passed": true,
+    "detail": "0 observations beyond 4.0 std devs (flagged for review, not auto-removed)",
+    "metric_value": 0.0
+  },
+  {
+    "check_name": "completeness",
+    "ticker": "TGT",
+    "passed": true,
+    "detail": "7 of 365 expected weekly observations missing (1.9%), threshold is 5.0%",
+    "metric_value": 0.0192
+  },
+  {
+    "check_name": "timeliness_gaps",
+    "ticker": "TGT",
+    "passed": true,
+    "detail": "Largest gap between observations is 14.0 days (threshold 21 days)",
+    "metric_value": 14.0
+  },
+  {
+    "check_name": "duplicates",
+    "ticker": "TGT",
+    "passed": false,
+    "detail": "1 duplicate (date, ticker) records found",
+    "metric_value": 1.0
+  },
+  {
+    "check_name": "outliers",
+    "ticker": "TGT",
+    "passed": true,
+    "detail": "0 observations beyond 4.0 std devs (flagged for review, not auto-removed)",
+    "metric_value": 0.0
+  }
+]

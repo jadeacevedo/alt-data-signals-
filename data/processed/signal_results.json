@@ -1,0 +1,40 @@
+[
+  {
+    "ticker": "CMG",
+    "n_quarters": 10,
+    "in_sample_corr": -0.3941,
+    "in_sample_pvalue": 0.3816,
+    "out_of_sample_corr": 0.8557,
+    "out_of_sample_pvalue": 0.3462,
+    "reliable": true,
+    "caveats": [
+      "In-sample and out-of-sample correlation have opposite signs - classic sign of an unstable or spurious relationship, not a durable signal.",
+      "Search interest is a normalized, relative index (0-100), not an absolute volume - changes in scale/methodology by the data provider could look like a real trend shift."
+    ]
+  },
+  {
+    "ticker": "LULU",
+    "n_quarters": 10,
+    "in_sample_corr": -0.2422,
+    "in_sample_pvalue": 0.6008,
+    "out_of_sample_corr": -0.2236,
+    "out_of_sample_pvalue": 0.8564,
+    "reliable": true,
+    "caveats": [
+      "Search interest is a normalized, relative index (0-100), not an absolute volume - changes in scale/methodology by the data provider could look like a real trend shift."
+    ]
+  },
+  {
+    "ticker": "TGT",
+    "n_quarters": 10,
+    "in_sample_corr": -0.6819,
+    "in_sample_pvalue": 0.0915,
+    "out_of_sample_corr": 0.255,
+    "out_of_sample_pvalue": 0.8358,
+    "reliable": true,
+    "caveats": [
+      "In-sample and out-of-sample correlation have opposite signs - classic sign of an unstable or spurious relationship, not a durable signal.",
+      "Search interest is a normalized, relative index (0-100), not an absolute volume - changes in scale/methodology by the data provider could look like a real trend shift."
+    ]
+  }
+]
