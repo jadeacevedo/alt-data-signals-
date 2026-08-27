@@ -5,10 +5,7 @@ long/short equity fund: ingest a noisy public alt-data proxy (Google Trends sear
 interest), clean and validate it, test whether it actually predicts a public
 retailer's quarterly revenue, and expose the results through a natural-language
 query layer an analyst could use.
-
-This project is built to demonstrate the exact skillset needed for an
-**Alternative Data / AI Data Engineer** role at a long/short equity fund:
-
+this project demonstrates: 
 - Building reliable, observable data pipelines (bronze -> silver -> gold layers)
 - Automated data quality checks (completeness, timeliness, outliers, schema drift)
 - Signal validation with proper backtesting discipline (no look-ahead bias,
@@ -55,6 +52,18 @@ alt-data-signal-pipeline/
 │   └── test_quality_checks.py
 └── run_pipeline.py             # single entrypoint: run everything end to end
 ```
+## design decision 
+
+- **Bronze/silver/gold layering**: raw pulls are never mutated in place, so a bad
+  cleaning step can always be re-run from source.
+- **No look-ahead bias**: the backtest only ever uses alt-data observations dated
+  before a given quarter's earnings date when predicting that quarter.
+- **Every signal claim ships with its caveats**: sample size, R², and known
+  limitations are attached to the output object itself, not just mentioned in
+  prose, so the query layer can't "forget" to disclose them.
+- **Schema drift handling**: `ingest.py` validates incoming data against an
+  expected schema and quarantines rows that don't match instead of silently
+  dropping or crashing.
 
 ## Quickstart
 
@@ -151,5 +160,5 @@ Open data quality flags:
   - completeness: 354 of 365 expected weekly observations missing (97.0%), threshold is 5.0%
   - timeliness_gaps: Largest gap between observations is 31.0 days (threshold 21 days)
 
-#summary 
+# summary 
 The alternative-data pipeline successfully ingested, cleaned, and evaluated search-interest data for Lululemon (LULU), Chipotle Mexican Grill (CMG), and Target (TGT) against quarterly revenue actuals. However, the current dataset presents significant data-quality limitations that reduce confidence in the resulting signals. Each ticker experienced approximately 97% missing weekly observations, with the largest observation gap reaching 31 days versus a 21-day threshold. While the pipeline was able to construct quarterly features, the limited underlying observations warrant caution when interpreting the results. LULU showed a weak and statistically insignificant out-of-sample relationship between search interest and subsequent revenue growth (correlation: -0.23; p=0.85), providing no meaningful evidence of predictive value. TGT showed a stronger negative in-sample relationship but this reversed out-of-sample (from -0.69 to +0.37), indicating an unstable relationship with no statistically significant predictive power. CMG produced an unusually strong out-of-sample correlation of 0.9998 (p=0.013), but this result should not be treated as decision-grade because the relationship reversed direction between the in-sample and out-of-sample periods, raising the possibility of a spurious or sample-specific effect. Overall, the analysis suggests that search interest may provide useful descriptive context around consumer demand, but the current evidence does not support using the signals as standalone revenue predictors. Additional historical observations, improved weekly data coverage, and more robust out-of-sample validation are recommended before incorporating these alternative-data signals into investment decisions.
